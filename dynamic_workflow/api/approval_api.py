@@ -3,107 +3,115 @@
 
 import frappe
 from frappe import _
-from dynamic_workflow.workflow_core.approval_engine import ApprovalEngine
-from dynamic_workflow.workflow_core.business_engine import BusinessActionEngine
+from frappe.utils import now
 
 
 @frappe.whitelist()
 def submit_approval(document_type, document_name, action, comments='', attachments=None, **kwargs):
-    """提交审批"""
+    """
+    Submit approval action
     
-    doc = frappe.get_doc(document_type, document_name)
+    Frappe v16 compatible API endpoint
+    """
     
-    # 检查权限
-    if not frappe.has_permission(document_type, 'write', doc=doc):
-        frappe.throw(_("You do not have permission to approve this document"))
-    
-    # 创建审批记录
-    approval_log = frappe.get_doc({
-        'doctype': 'Approval Log',
-        'document_type': document_type,
-        'document_name': document_name,
-        'approver': frappe.session.user,
-        'action': action,
-        'comments': comments,
-        'status': 'Completed',
-        'action_date': frappe.utils.now(),
-        'additional_approvers': kwargs.get('additional_approvers', ''),
-        'forward_to': kwargs.get('forward_to', ''),
-    })
-    
-    approval_log.insert()
-    
-    # 根据动作类型处理
-    if action == 'Approve':
-        doc.dw_status = 'Approved'
-        doc.dw_current_node = (doc.dw_current_node or 0) + 1
+    try:
+        # Check permission
+        frappe.get_doc(document_type, document_name).check_permission('write')
         
-        # 执行业务动作
-        if doc.dw_workflow_config:
-            try:
-                BusinessActionEngine.execute_on_approval(doc, doc.dw_workflow_config)
-            except Exception as e:
-                frappe.log_error(f"Business action execution failed: {str(e)}")
-    
-    elif action == 'Reject':
-        doc.dw_status = 'Rejected'
-        
-        # 执行拒绝后的业务动作
-        if doc.dw_workflow_config:
-            try:
-                BusinessActionEngine.execute_on_rejection(doc, doc.dw_workflow_config)
-            except Exception as e:
-                frappe.log_error(f"Business action execution failed: {str(e)}")
-    
-    elif action == 'Return':
-        if doc.dw_current_node > 0:
-            doc.dw_current_node -= 1
-        doc.dw_status = 'Pending Approval'
-    
-    doc.save()
-    
-    frappe.publish_realtime(
-        'approval_updated',
-        {
+        # Create approval log
+        approval_log = frappe.get_doc({
+            'doctype': 'Approval Log',
             'document_type': document_type,
             'document_name': document_name,
-            'action': action,
             'approver': frappe.session.user,
-        }
-    )
+            'action': action,
+            'comments': comments,
+            'status': 'Completed',
+            'action_date': now(),
+            'additional_approvers': kwargs.get('additional_approvers', ''),
+            'forward_to': kwargs.get('forward_to', ''),
+        })
+        
+        approval_log.insert()
+        
+        # Get document and update status
+        doc = frappe.get_doc(document_type, document_name)
+        
+        if action == 'Approve':
+            doc.dw_status = 'Approved'
+            doc.dw_current_node = (doc.dw_current_node or 0) + 1
+        
+        elif action == 'Reject':
+            doc.dw_status = 'Rejected'
+        
+        elif action == 'Return':
+            if doc.dw_current_node > 0:
+                doc.dw_current_node -= 1
+            doc.dw_status = 'Pending Approval'
+        
+        doc.save()
+        
+        # Publish realtime update
+        frappe.publish_realtime(
+            'approval_updated',
+            {
+                'document_type': document_type,
+                'document_name': document_name,
+                'action': action,
+                'approver': frappe.session.user,
+            }
+        )
+        
+        return {'status': 'success', 'message': _(f'Approval {action} submitted')}
     
-    return {'status': 'success', 'message': _(f'Approval {action} submitted')}
+    except Exception as e:
+        frappe.log_error(f"Error submitting approval: {str(e)}")
+        return {'status': 'error', 'message': str(e)}
 
 
 @frappe.whitelist()
 def get_approval_logs(document_type, document_name):
-    """获取审批记录"""
+    """
+    Get approval logs for document
+    """
     
-    logs = frappe.get_all(
-        'Approval Log',
-        filters={
-            'document_type': document_type,
-            'document_name': document_name,
-        },
-        fields=['*'],
-        order_by='action_date desc'
-    )
+    try:
+        logs = frappe.get_all(
+            'Approval Log',
+            filters={
+                'document_type': document_type,
+                'document_name': document_name,
+            },
+            fields=['name', 'approver', 'action', 'comments', 'action_date', 'duration_hours'],
+            order_by='action_date desc'
+        )
+        
+        return logs
     
-    return logs
+    except Exception as e:
+        frappe.log_error(f"Error getting approval logs: {str(e)}")
+        return []
 
 
 @frappe.whitelist()
 def get_pending_approvals():
-    """获取当前用户的待审批列表"""
+    """
+    Get current user's pending approvals
+    """
     
-    pending = frappe.get_all(
-        'Approval Log',
-        filters={
-            'approver': frappe.session.user,
-            'status': 'Pending'
-        },
-        fields=['document_type', 'document_name', 'approval_node', 'action_date'],
-        order_by='action_date asc'
-    )
+    try:
+        pending = frappe.get_all(
+            'Approval Log',
+            filters={
+                'approver': frappe.session.user,
+                'status': 'Pending'
+            },
+            fields=['document_type', 'document_name', 'approval_node', 'action_date'],
+            order_by='action_date asc'
+        )
+        
+        return pending
     
-    return pending
+    except Exception as e:
+        frappe.log_error(f"Error getting pending approvals: {str(e)}")
+        return []
