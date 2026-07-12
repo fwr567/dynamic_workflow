@@ -1,0 +1,51 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background-color: #dc3545; padding: 20px; text-align: center; border-radius: 4px 4px 0 0;">
+        <h2 style="color: #fff; margin: 0;">{{ _("Approval Escalation Notice") }}</h2>
+    </div>
+    <div style="padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6;">
+        <p>{{ _("Dear Manager,") }}</p>
+        <p>
+            {{ _("An approval has been escalated to your attention. The original approver") }}
+            <strong>{{ original_approver }}</strong>
+            {{ _("has not responded within the configured timeout period.") }}
+        </p>
+        <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+            <tr>
+                <td style="padding: 8px; border: 1px solid #dee2e6; background-color: #e9ecef; font-weight: bold;">
+                    {{ _("Document Type") }}
+                </td>
+                <td style="padding: 8px; border: 1px solid #dee2e6;">
+                    {{ doc_type }}
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #dee2e6; background-color: #e9ecef; font-weight: bold;">
+                    {{ _("Document Name") }}
+                </td>
+                <td style="padding: 8px; border: 1px solid #dee2e6;">
+                    {{ doc_name }}
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #dee2e6; background-color: #e9ecef; font-weight: bold;">
+                    {{ _("Original Approver") }}
+                </td>
+                <td style="padding: 8px; border: 1px solid #dee2e6;">
+                    {{ original_approver }}
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="{{ doc_link }}"
+               style="background-color: #dc3545; color: #fff; padding: 10px 25px; text-decoration: none; border-radius: 4px; display: inline-block;">
+                {{ _("Review & Take Action") }}
+            </a>
+        </div>
+        <p style="color: #6c757d; font-size: 12px;">
+            {{ _("Please review the document and take appropriate action immediately.") }}
+        </p>
+    </div>
+    <div style="padding: 10px; text-align: center; background-color: #e9ecef; border-radius: 0 0 4px 4px; font-size: 11px; color: #6c757d;">
+        {{ _("This is an automated escalation from Dynamic Workflow.") }}
+    </div>
+</div>

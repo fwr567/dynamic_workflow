@@ -1,0 +1,41 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background-color: #007bff; padding: 20px; text-align: center; border-radius: 4px 4px 0 0;">
+        <h2 style="color: #fff; margin: 0;">{{ _("Approval Reminder") }}</h2>
+    </div>
+    <div style="padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6;">
+        <p>{{ _("Dear Approver,") }}</p>
+        <p>
+            {{ _("This is a reminder that you have a pending approval for the following document:") }}
+        </p>
+        <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+            <tr>
+                <td style="padding: 8px; border: 1px solid #dee2e6; background-color: #e9ecef; font-weight: bold;">
+                    {{ _("Document Type") }}
+                </td>
+                <td style="padding: 8px; border: 1px solid #dee2e6;">
+                    {{ doc_type }}
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #dee2e6; background-color: #e9ecef; font-weight: bold;">
+                    {{ _("Document Name") }}
+                </td>
+                <td style="padding: 8px; border: 1px solid #dee2e6;">
+                    {{ doc_name }}
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="{{ doc_link }}"
+               style="background-color: #007bff; color: #fff; padding: 10px 25px; text-decoration: none; border-radius: 4px; display: inline-block;">
+                {{ _("View Document") }}
+            </a>
+        </div>
+        <p style="color: #6c757d; font-size: 12px;">
+            {{ _("Please take action at your earliest convenience.") }}
+        </p>
+    </div>
+    <div style="padding: 10px; text-align: center; background-color: #e9ecef; border-radius: 0 0 4px 4px; font-size: 11px; color: #6c757d;">
+        {{ _("This is an automated notification from Dynamic Workflow.") }}
+    </div>
+</div>
