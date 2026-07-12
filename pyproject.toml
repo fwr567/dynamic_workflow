@@ -1,0 +1,22 @@
+[project]
+name = "dynamic_workflow"
+authors = [
+    { name = "fwr567", email = "fengweirui567@163.com"}
+]
+description = "Advanced workflow engine for ERPNext V16 with approval matrix, dynamic nodes, and WeChat integration"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # "frappe~=16.0.0" # Installed and managed by bench.
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.dev-dependencies]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
