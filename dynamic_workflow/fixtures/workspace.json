@@ -2,7 +2,7 @@
  "charts": [],
  "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Dynamic Workflow\",\"level\":3,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Matrix\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dynamic Workflow Config\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Log\",\"col\":4}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"Configuration\",\"level\":4,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Delegation\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workflow Timeout Escalation\",\"col\":4}}]",
  "creation": "2024-01-01 00:00:00",
- "doctype": "DocType",
+ "doctype": "Workspace",
  "hide_custom": 0,
  "icon": "fa fa-check-square-o",
  "idx": 0,
