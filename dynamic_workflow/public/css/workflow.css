@@ -1,0 +1,92 @@
+/* Dynamic Workflow - Status Badges */
+.dw-status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dw-status-pending {
+    background-color: #fef3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+}
+
+.dw-status-in-progress {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #007bff;
+}
+
+.dw-status-approved {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #28a745;
+}
+
+.dw-status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #dc3545;
+}
+
+.dw-status-returned {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+}
+
+.dw-status-terminated {
+    background-color: #343a40;
+    color: #fff;
+    border: 1px solid #343a40;
+}
+
+.dw-status-recalled {
+    background-color: #e2e3e5;
+    color: #383d41;
+    border: 1px solid #6c757d;
+}
+
+/* Workflow Timeline */
+.dw-workflow-timeline {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #d1d8dd;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.dw-workflow-timeline h6 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.dw-timeline-item {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dw-timeline-item:last-child {
+    border-bottom: none;
+}
+
+.dw-timeline-badge {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.bg-success { background-color: #28a745; }
+.bg-danger { background-color: #dc3545; }
+.bg-warning { background-color: #ffc107; }
+.bg-info { background-color: #17a2b8; }
+.bg-dark { background-color: #343a40; }
+.bg-secondary { background-color: #6c757d; }

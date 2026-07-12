@@ -1,0 +1,112 @@
+{
+ "charts": [],
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Dynamic Workflow\",\"level\":3,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Matrix\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dynamic Workflow Config\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Log\",\"col\":4}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"Configuration\",\"level\":4,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Delegation\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workflow Timeout Escalation\",\"col\":4}}]",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "hide_custom": 0,
+ "icon": "fa fa-check-square-o",
+ "idx": 0,
+ "is_default": 0,
+ "label": "Dynamic Workflow",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Approval Matrix",
+   "link_count": 0,
+   "link_to": "Approval Matrix",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dynamic Workflow Config",
+   "link_count": 0,
+   "link_to": "Dynamic Workflow Config",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Approval Log",
+   "link_count": 0,
+   "link_to": "Approval Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Approval Delegation",
+   "link_count": 0,
+   "link_to": "Approval Delegation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow Timeout Escalation",
+   "link_count": 0,
+   "link_to": "Workflow Timeout Escalation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow",
+ "name": "Dynamic Workflow",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 30,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Approval Matrix",
+   "link_to": "Approval Matrix",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Dynamic Workflow Config",
+   "link_to": "Dynamic Workflow Config",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Approval Log",
+   "link_to": "Approval Log",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Approval Delegation",
+   "link_to": "Approval Delegation",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Workflow Timeout Escalation",
+   "link_to": "Workflow Timeout Escalation",
+   "type": "DocType"
+  }
+ ],
+ "title": "Dynamic Workflow"
+}
