@@ -20,7 +20,7 @@ after_install = "dynamic_workflow.setup.install.after_install"
 after_migrate = "dynamic_workflow.setup.install.after_migrate"
 
 doc_events = {
-    "Purchase Request": {
+    "Material Request": {
         "before_insert": "dynamic_workflow.api.document_integration.attach_dynamic_workflow",
         "before_submit": "dynamic_workflow.api.document_integration.validate_approval",
         "on_submit": "dynamic_workflow.api.document_integration.execute_business_actions",
