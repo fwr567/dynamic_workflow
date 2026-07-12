@@ -6,7 +6,6 @@ from frappe import _
 from dynamic_workflow.dynamic_workflow.approval_engine import ApprovalEngine
 from dynamic_workflow.dynamic_workflow.business_engine import BusinessActionEngine
 from dynamic_workflow.dynamic_workflow.dynamic_nodes import DynamicNodeEngine
-from dynamic_workflow.dynamic_workflow.delegation import DelegationEngine
 
 
 def attach_dynamic_workflow(doc, method=None):
