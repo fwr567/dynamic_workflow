@@ -17,8 +17,10 @@ def after_migrate():
 def create_dw_custom_fields():
     """Create Dynamic Workflow custom fields on ERPNext transaction DocTypes.
 
-    Only creates fields on DocTypes that actually exist in the current site,
-    so the app can be installed even if some ERPNext modules are not present.
+    Only creates fields on DocTypes that actually exist in the current site.
+    Each DocType is processed independently so a validation error on one
+    DocType (e.g. broken links from a removed third-party app) does not
+    block the others.
     """
     target_doctypes = [
         "Material Request",
@@ -27,13 +29,19 @@ def create_dw_custom_fields():
     ]
 
     fields = _get_custom_fields()
-    custom_fields = {}
-    for doctype in target_doctypes:
-        if frappe.db.table_exists(doctype):
-            custom_fields[doctype] = fields
 
-    if custom_fields:
-        create_custom_fields(custom_fields, update=True)
+    for doctype in target_doctypes:
+        if not frappe.db.table_exists(doctype):
+            continue
+
+        try:
+            create_custom_fields({doctype: fields}, update=True)
+        except Exception as e:
+            frappe.log_error(
+                title=f"Dynamic Workflow - Custom Field Error ({doctype})",
+                message=str(e),
+            )
+            frappe.clear_last_message()
 
 
 def _get_custom_fields():
