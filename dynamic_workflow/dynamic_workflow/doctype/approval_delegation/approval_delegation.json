@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "autoname": "format:DEL-{delegator}-to-{delegatee}-{####}",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "delegator",
+  "delegatee",
+  "from_date",
+  "to_date",
+  "is_active",
+  "status",
+  "document_types",
+  "reason"
+ ],
+ "fields": [
+  {
+   "default": "__user",
+   "fieldname": "delegator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Delegator",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "delegatee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Delegatee",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To Date",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nExpired\nCancelled",
+   "read_only": 1
+  },
+  {
+   "description": "Comma-separated DocType names. Leave blank to apply to all document types.",
+   "fieldname": "document_types",
+   "fieldtype": "Small Text",
+   "label": "Document Types"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Text",
+   "label": "Reason"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow",
+ "name": "Approval Delegation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "All",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
