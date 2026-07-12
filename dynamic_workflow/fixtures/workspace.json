@@ -108,5 +108,6 @@
    "type": "DocType"
   }
  ],
- "title": "Dynamic Workflow"
+ "title": "Dynamic Workflow",
+ "type": "Workspace"
 }
