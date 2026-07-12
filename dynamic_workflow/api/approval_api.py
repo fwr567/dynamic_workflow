@@ -6,7 +6,7 @@ from frappe import _
 from dynamic_workflow.dynamic_workflow.approval_actions import ApprovalAction
 from dynamic_workflow.dynamic_workflow.approval_engine import ApprovalEngine
 from dynamic_workflow.dynamic_workflow.dynamic_nodes import DynamicNodeEngine
-from dynamic_workflow.dynamic_workflow.delegation import DelegationEngine
+from dynamic_workflow.dynamic_workflow.delegation import get_delegatee
 
 
 @frappe.whitelist()
@@ -87,7 +87,7 @@ def get_pending_approvals(user=None):
     if not user:
         user = frappe.session.user
 
-    delegatee = DelegationEngine.get_delegatee(user)
+    delegatee = get_delegatee(user)
     effective_user = delegatee or user
 
     logs = frappe.get_all(
