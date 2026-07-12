@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:DW-{document_type}-{####}",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "document_type",
+  "approval_matrix",
+  "is_active",
+  "timeout_section",
+  "enable_timeout_escalation",
+  "first_timeout_hours",
+  "second_timeout_hours",
+  "node_templates_section",
+  "node_templates",
+  "actions_section",
+  "on_approval_actions",
+  "on_rejection_actions",
+  "integration_section",
+  "enable_wechat_notification"
+ ],
+ "fields": [
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approval_matrix",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Approval Matrix",
+   "options": "Approval Matrix",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "timeout_section",
+   "fieldtype": "Section Break",
+   "label": "Timeout Escalation"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_timeout_escalation",
+   "fieldtype": "Check",
+   "label": "Enable Timeout Escalation"
+  },
+  {
+   "default": "24",
+   "depends_on": "enable_timeout_escalation",
+   "fieldname": "first_timeout_hours",
+   "fieldtype": "Int",
+   "label": "First Timeout (Hours)"
+  },
+  {
+   "default": "48",
+   "depends_on": "enable_timeout_escalation",
+   "fieldname": "second_timeout_hours",
+   "fieldtype": "Int",
+   "label": "Second Timeout (Hours)"
+  },
+  {
+   "fieldname": "node_templates_section",
+   "fieldtype": "Section Break",
+   "label": "Dynamic Node Templates"
+  },
+  {
+   "fieldname": "node_templates",
+   "fieldtype": "Table",
+   "label": "Node Templates",
+   "options": "Dynamic Node Template"
+  },
+  {
+   "fieldname": "actions_section",
+   "fieldtype": "Section Break",
+   "label": "Business Actions"
+  },
+  {
+   "fieldname": "on_approval_actions",
+   "fieldtype": "Table",
+   "label": "On Approval Actions",
+   "options": "Business Action"
+  },
+  {
+   "fieldname": "on_rejection_actions",
+   "fieldtype": "Table",
+   "label": "On Rejection Actions",
+   "options": "Business Action"
+  },
+  {
+   "fieldname": "integration_section",
+   "fieldtype": "Section Break",
+   "label": "Integrations"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_wechat_notification",
+   "fieldtype": "Check",
+   "label": "Enable WeChat Notification"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow",
+ "name": "Dynamic Workflow Config",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

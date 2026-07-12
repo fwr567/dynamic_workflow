@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "node_name",
+  "node_type",
+  "sequence",
+  "condition_type",
+  "amount_from",
+  "amount_to",
+  "custom_condition",
+  "approval_steps"
+ ],
+ "fields": [
+  {
+   "fieldname": "node_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Node Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "node_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Node Type",
+   "options": "Serial\nParallel"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sequence"
+  },
+  {
+   "fieldname": "condition_type",
+   "fieldtype": "Select",
+   "label": "Condition Type",
+   "options": "\nAmount\nCustom"
+  },
+  {
+   "depends_on": "eval:doc.condition_type=='Amount'",
+   "fieldname": "amount_from",
+   "fieldtype": "Currency",
+   "label": "Amount From"
+  },
+  {
+   "depends_on": "eval:doc.condition_type=='Amount'",
+   "fieldname": "amount_to",
+   "fieldtype": "Currency",
+   "label": "Amount To"
+  },
+  {
+   "depends_on": "eval:doc.condition_type=='Custom'",
+   "fieldname": "custom_condition",
+   "fieldtype": "Code",
+   "label": "Custom Condition (Python)",
+   "options": "Python"
+  },
+  {
+   "fieldname": "approval_steps",
+   "fieldtype": "Table",
+   "label": "Approval Steps",
+   "options": "Node Approval Step"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow",
+ "name": "Dynamic Node Template",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "amount_field",
+  "amount_from",
+  "amount_to",
+  "department",
+  "business_line",
+  "project_type",
+  "custom_condition",
+  "approval_chain_desc"
+ ],
+ "fields": [
+  {
+   "default": "grand_total",
+   "fieldname": "amount_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Amount Field"
+  },
+  {
+   "fieldname": "amount_from",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount From"
+  },
+  {
+   "fieldname": "amount_to",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount To"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "business_line",
+   "fieldtype": "Data",
+   "label": "Business Line"
+  },
+  {
+   "fieldname": "project_type",
+   "fieldtype": "Data",
+   "label": "Project Type"
+  },
+  {
+   "fieldname": "custom_condition",
+   "fieldtype": "Code",
+   "label": "Custom Condition (Python)",
+   "options": "Python"
+  },
+  {
+   "fieldname": "approval_chain_desc",
+   "fieldtype": "Table",
+   "label": "Approval Chain Steps",
+   "options": "Approval Chain Step"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow",
+ "name": "Approval Matrix Rule",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
