@@ -39,10 +39,10 @@ doc_events = {
 
 scheduler_events = {
     "hourly": [
-        "dynamic_workflow.dynamic_workflow.timeout_escalation.TimeoutEscalationEngine.check_and_escalate",
+        "dynamic_workflow.dynamic_workflow.timeout_escalation.check_and_escalate",
     ],
     "daily": [
-        "dynamic_workflow.dynamic_workflow.delegation.DelegationEngine.sync_delegations",
+        "dynamic_workflow.dynamic_workflow.delegation.sync_delegations",
     ],
 }
 
