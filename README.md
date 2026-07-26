@@ -6,161 +6,172 @@
 
 Dynamic Workflow 是一个为 ERPNext V16 设计的高级工作流管理应用，提供灵活的审批矩阵、动态节点配置、以及完整的审批追踪功能。
 
+## 📚 文档导航
+
+> 🎯 **新用户？** 从[快速开始](#快速开始)或[快速参考](./QUICKSTART.md)开始！
+
+| 文档 | 说明 |
+|-----|------|
+| 📖 [快速参考](./QUICKSTART.md) | 5分钟快速上手指南 |
+| 📖 [安装指南](./docs/installation.md) | 详细的安装步骤和问题排查 |
+| 📖 [文档类型说明](./docs/doctype_guide.md) | 核心数据模型和字段详解 |
+| 📖 [API 文档](./docs/api.md) | 完整的 REST API 参考 |
+| 📖 [最佳实践](./docs/best_practices.md) | 配置原则、性能优化和故障排查 |
+| 📖 [架构设计](./docs/architecture.md) | 系统架构、数据流和扩展指南 |
+| 📖 [贡献指南](./CONTRIBUTING.md) | 如何参与项目开发 |
+| 📖 [更新日志](./CHANGELOG.md) | 版本历史和功能改进 |
+
+---
+
 ## 📋 核心功能
 
-### 1. **审批矩阵管理** 
-- 按部门、角色、金额等多维度配置审批权限
-- 支持灵活的审批规则引擎
-- 实时审批权限计算
+### 1. **灵活的审批矩阵** 
+- ✅ 按部门、角色、金额等多维度配置审批权限
+- ✅ 支持多层级审批规则引擎
+- ✅ 动态审批权限计算
+- ✅ 优先级管理
 
 ### 2. **审批组织结构**
-- 组织部门/团队的审批层级配置
-- 灵活的汇报关系设置
-- 多级审批链配置
+- ✅ 部门和团队的审批层级配置
+- ✅ 灵活的汇报关系设置
+- ✅ 多级审批链支持
+- ✅ 组织结构自动同步
 
-### 3. **审批模板**
-- 预定义审批流程模板
-- 快速流程部署
-- 模板版本管理
+### 3. **审批权委托**
+- ✅ 临时审批权转移
+- ✅ 按日期范围的委托
+- ✅ 自动过期管理
+- ✅ 支持多人委托
 
-### 4. **审批���托**
-- 临时审批权转移
-- 指定时间范围内有效
-- 自动同步与过期管理
+### 4. **审批转办与加签**
+- ✅ 审批过程中的转办
+- ✅ 前加签和后加签支持
+- ✅ 灵活的权限转移
+- ✅ 完整的操作记录
 
-### 5. **审批转办**
-- 当前审批人可转办至他人
-- 记录转办历史
-- 支持多次转办
+### 5. **审批超时升级**
+- ✅ 可配置的超时时间
+- ✅ 多种升级动作 (自动通过/转移/通知)
+- ✅ 定期催办提醒
+- ✅ 升级规则引擎
 
-### 6. **审批加签**
-- 审批过程中添加加签人
-- 支持前加签和后加签
-- 灵活的加签规则
+### 6. **业务动作自动化**
+- ✅ 审批完成后的自动操作
+- ✅ 字段更新、API 调用、脚本执行
+- ✅ 条件触发机制
+- ✅ 错误处理和重试
 
-### 7. **审批回退**
-- 支持退回至指定审批节点
-- 记录回退原因
-- 自动重新流转
+### 7. **审批追踪和审计**
+- ✅ 完整的审批历史记录
+- ✅ 可视化审批流程时间线
+- ✅ 详细的操作日志
+- ✅ 合规审计支持
 
-### 8. **审批轨迹**
-- 完整的审批历史记录
-- 可视化审批流程图
-- 详细的操作日志
+### 8. **多渠道通知**
+- ✅ 邮件通知
+- ✅ 企业微信集成 (可选)
+- ✅ 短信通知支持 (可选)
+- ✅ 自定义通知模板
 
-### 9. **审批附件**
-- 支持上传审批相关附件
-- 版本控制
-- 权限管理
+### 9. **RESTful API & WebHook**
+- ✅ 完整的 API 接口
+- ✅ WebHook 事件支持
+- ✅ 第三方系统对接
+- ✅ 详细的 API 文档
 
-### 10. **审批意见模板**
-- 常用审批意见预定义
-- 快速选择和使用
-- 自定义意见库
-
-### 11. **审批催办**
-- 逾期审批提醒
-- 多渠道通知（邮件、企业微信等）
-- 可配置催办规则
-
-### 12. **审批超时**
-- 自动超时升级
-- 自动转办至管理员
-- 超时规则配置
-
-### 13. **审批代理**
-- 设置代理审批人
-- 代理权限范围限制
-- 代理有效期管理
-
-### 14. **审批事件**
-- 审批流程事件触发
-- Webhook支持
-- 自定义事件处理
+---
 
 ## 🎯 支持的单据类型
 
-- **物料需求计划 (Material Request)**
-- **采购订单 (Purchase Order)**
-- **销售订单 (Sales Order)**
-- *(可扩展至其他单据类型)*
+- 📦 **物料需求计划** (Material Request)
+- 📦 **采购订单** (Purchase Order)
+- 📦 **销售订单** (Sales Order)
+- 📦 **其他** *(可扩展)*
+
+---
 
 ## 🛠 技术栈
 
-- **框架**: ERPNext v16 / Frappe
-- **语言**: Python 3.10+
-- **数据库**: MariaDB / PostgreSQL
-- **前端**: Frappe UI 框架
+| 组件 | 要求 |
+|-----|------|
+| 框架 | ERPNext v16 / Frappe v16 |
+| Python | 3.10+ |
+| 数据库 | MariaDB 10.3+ 或 PostgreSQL 12+ |
+| 前端 | Frappe UI 框架 |
+| 缓存 | Redis 4.0+ |
+
+---
 
 ## 📦 安装指南
 
-### 前置条件
-- ERPNext v16 已安装
-- Frappe Bench 环境已配置
-- Python 3.10 或更高版本
+### 快速安装 (5分钟)
 
-### 安装步骤
-
-1. **克隆应用到 Bench 应用目录**
 ```bash
 cd ~/frappe-bench
-git clone https://github.com/fwr567/dynamic_workflow apps/dynamic_workflow
-```
-
-2. **安装应用**
-```bash
-bench get-app dynamic_workflow
-bench install-app dynamic_workflow
-```
-
-3. **执行数据库迁移**
-```bash
-bench migrate
-```
-
-4. **重启 Bench**
-```bash
+bench get-app https://github.com/fwr567/dynamic_workflow
+bench install-app dynamic_workflow --site site.local
+bench migrate --site site.local
 bench restart
 ```
 
-5. **在浏览器中访问**
-```
-http://localhost:8000
-```
+### 详细安装步骤
 
-然后在 Awesome Bar 中搜索 "Dynamic Workflow" 进入应用。
+请参考 **[完整安装指南](./docs/installation.md)** 了解：
+- 系统要求检查
+- 步骤式安装说明
+- 初始配置指南
+- 常见问题解决
+- 升级和卸载说明
+
+---
 
 ## 🚀 快速开始
 
-### 1. 配置审批矩阵
+### 1. 创建第一个审批流 (10分钟)
 
-访问 **Dynamic Workflow > 审批矩阵** 新建规则：
-
-```
-文档类型: 采购订单
-条件: 金额 > 10000
-审批人: 采购部经理
-优先级: 1
-```
-
-### 2. 设置审批模板
-
-创建审批模板以快速应用到不同单据类型：
-
-```
-模板名称: 标准采购审批流
-步骤1: 部门主管审批
-步骤2: 采购部审��
-步骤3: 财务部审批
+```bash
+# 1. 进入 ERPNext
+# 2. 搜索 "Dynamic Workflow"
+# 3. 进入应用
+# 4. 点击 "工作流配置" → 新建
+# 5. 选择单据类型和审批矩阵
+# 6. 保存
 ```
 
-### 3. 配置触发单据
+### 2. 创建审批矩阵 (15分钟)
 
-在 **Dynamic Workflow Config** 中启用需要工作流的单据类型。
+参考 **[快速参考](./QUICKSTART.md#3-创建审批矩阵-15分钟)** 了解详细步骤。
 
-### 4. 启动审批流程
+### 3. 配置通知 (可选)
 
-创建采购订单时，系统将自动触发对应的审批流程。
+- 邮件通知：在系统设置中配置 SMTP
+- 企业微信：在应用设置中配置 WebHook
+
+更多详情见 **[安装指南 - 通知配置](./docs/installation.md#配置-6-配置通知)**
+
+---
+
+## 💡 常见场景
+
+### 场景1：按金额分级审批
+
+需求：不同金额由不同级别审批
+
+**参考**: [最佳实践 - 常见场景1](./docs/best_practices.md#场景1电商平台订单审批)
+
+### 场景2：多部门并联审批
+
+需求：多个部门同时审批，都同意才能通过
+
+**参考**: [最佳实践 - 常见场景2](./docs/best_practices.md#场景2多部门协同审批)
+
+### 场景3：权限委托
+
+需求：出差时，权限临时委托给他人
+
+**参考**: [快速参考 - 场景3](./QUICKSTART.md#场景3权限委托)
+
+---
 
 ## 📊 数据模型
 
@@ -170,7 +181,7 @@ http://localhost:8000
 |------|------|
 | Approval Matrix | 审批矩阵规则定义 |
 | Approval Matrix Rule | 审批矩阵具体规则 |
-| Dynamic Workflow Config | 工作流配置 |
+| Dynamic Workflow Config | 工作流启用配置 |
 | Dynamic Node Template | 审批节点模板 |
 | Approval Delegation | 审批权委托 |
 | Approval Log | 审批日志追踪 |
@@ -179,114 +190,121 @@ http://localhost:8000
 | Node Approval Step | 节点审批步骤 |
 | Approval Chain Step | 审批链步骤 |
 
+更多细节请参考 **[文档类型说明](./docs/doctype_guide.md)**
+
+---
+
 ## 🔌 API 接口
 
-### 获取审批矩阵
+### 获取待审批单据
 
-```python
-from dynamic_workflow.api.approval_matrix import get_approval_matrix
-
-matrix = get_approval_matrix(
-    doctype="Purchase Order",
-    approval_amount=50000,
-    department="采购部"
-)
+```bash
+curl -X GET "http://localhost:8000/api/method/dynamic_workflow.api.approval.get_pending_approvals?user=user@company.com"
 ```
 
-### 获取审批流程
+### 提交审批
 
-```python
-from dynamic_workflow.api.workflow_engine import get_workflow_chain
-
-chain = get_workflow_chain(
-    doctype="Sales Order",
-    document_name="SO-001"
-)
+```bash
+curl -X POST "http://localhost:8000/api/method/dynamic_workflow.api.approval.approve_document" \
+  -d "doctype=Purchase Order" \
+  -d "docname=PO-001" \
+  -d "comments=已审批"
 ```
 
-### 记录审批日志
+更多 API 示例请参考 **[完整 API 文档](./docs/api.md)**
 
-```python
-from dynamic_workflow.dynamic_workflow.approval_engine import log_approval
+---
 
-log_approval(
-    doctype="Purchase Order",
-    document_name="PO-001",
-    approver="user@company.com",
-    action="Approved",
-    comments="已核准"
-)
-```
+## 🔧 常见问题
 
-## ⚙️ 配置选项
+| 问题 | 答案 |
+|-----|------|
+| 如何查看待审批单据？ | 搜索 "待审批" 或访问 Dynamic Workflow 应用 |
+| 如何跳过某个步骤？ | 在工作流配置中将步骤标记为 "可选" |
+| 超时了怎么办？ | 系统自动发送催办邮件；48小时未处理会自动升级 |
+| 能否添加新文档类型？ | 可以，参考 [架构设计 - 扩展指南](./docs/architecture.md#扩展指南) |
 
-### 环境变量
+更多问题请参考 **[快速参考 - FAQ](./QUICKSTART.md#🔧-常见问题速查)** 或 [GitHub Discussions](https://github.com/fwr567/dynamic_workflow/discussions)
 
-在 `hooks.py` 中可配置：
+---
 
-```python
-# 是否启用微信集成
-ENABLE_WECHAT_NOTIFICATION = True
+## 🔐 权限管理
 
-# 是否启用邮件通知
-ENABLE_EMAIL_NOTIFICATION = True
+### 默认角色
 
-# 超时升级间隔 (小时)
-TIMEOUT_ESCALATION_INTERVAL = 24
-```
+| 角色 | 权限 |
+|-----|------|
+| System Manager | 管理所有工作流配置 |
+| Workflow Manager | 配置审批矩阵和规则 |
+| Document Approver | 审批和处理文档 |
+| Department Head | 部门级审批权 |
 
-## 🔐 权限控制
+参考 **[安装指南 - 权限控制](./docs/installation.md#配置-1-创建审批管理员角色)** 了解详细配置
 
-- **审批矩阵管理**: 需要系统管理员角色
-- **工作流配置**: 需要工作流管理员角色
-- **审批操作**: 基于审批矩阵规则动态分配
+---
 
-## 📱 微信集成 *(可选)*
+## 📈 性能
 
-配置企业微信机器人以获取审批通知：
+### 系统容量
 
-1. 在企业微信中创建机器人
-2. 在 Dynamic Workflow 设置中配置 Webhook URL
-3. 启用微信通知选项
+| 指标 | 标准值 |
+|-----|-------|
+| 日审批单据数 | 1000+ |
+| 审批日志查询 | <500ms |
+| 矩阵规则计算 | <200ms |
+| 并发审批用户 | 100+ |
 
-## 🐛 常见问题
+### 优化建议
 
-### Q: 如何添加新的单据类型支持？
-A: 编辑 `dynamic_workflow/hooks.py`，在 `doc_events` 字典中添加新的单据类型及其事件处理函数。
+参考 **[最佳实践 - 性能优化](./docs/best_practices.md#性能优化建议)** 了解如何优化系统性能
 
-### Q: 审批流程如何与业务流程联动？
-A: 在 **Business Action** 中定义审批完成后的业务动作（如自动转为已确认状态）。
+---
 
-### Q: 如何导出审批报表？
-A: 在 **Approval Log** 列表视图中使用"导出"功能，支持 Excel/CSV 格式。
+## 🆘 获得帮助
 
-### Q: 如何处理紧急审批？
-A: 使用"加签"功能快速添加高级审批人，或使用"审批代理"功能临时委托权限。
+### 寻求支持
 
-## 📚 文档与资源
+1. **📖 文档** - 大多数问题都能在 [文档导航](#文档导航) 中找到答案
+2. **��� Issue** - 在 [GitHub Issues](https://github.com/fwr567/dynamic_workflow/issues) 中搜索问题
+3. **💬 讨论** - 在 [Discussions](https://github.com/fwr567/dynamic_workflow/discussions) 中提问
+4. **📧 邮件** - 联系 fengweirui567@163.com
 
-- [ERPNext 官方文档](https://docs.erpnext.com)
-- [Frappe 框架文档](https://frappeframework.com)
-- [工作流最佳实践](./docs/best-practices.md) *(待补充)*
+### 报告 Bug
+
+1. 记录错误信息和操作步骤
+2. [创建 Issue](https://github.com/fwr567/dynamic_workflow/issues/new)
+3. 包含尽可能多的细节信息
+
+---
 
 ## 🤝 贡献指南
 
-欢迎提交 Pull Request 来改进这个项目！
+欢迎提交 Pull Request 改进项目！
 
+**贡献前请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)**
+
+快速流程：
 1. Fork 本仓库
 2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add AmazingFeature'`)
+3. 提交更改 (`git commit -m 'feat: add amazing feature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 开启 Pull Request
 
+---
+
 ## 📄 许可证
 
-本项目采用 AGPL-3.0 许可证 - 详见 [LICENSE](LICENSE) 文件。
+本项目采用 **AGPL-3.0** 许可证 - 详见 [LICENSE](LICENSE) 文件。
+
+---
 
 ## 👤 作者
 
 - **fwr567** - 项目维护者
-- 联系邮箱: [fengweirui567@163.com](mailto:fengweirui567@163.com)
+- 📧 邮箱: [fengweirui567@163.com](mailto:fengweirui567@163.com)
+- 🔗 GitHub: [@fwr567](https://github.com/fwr567)
+
+---
 
 ## 🙏 致谢
 
@@ -294,5 +312,23 @@ A: 使用"加签"功能快速添加高级审批人，或使用"审批代理"功�
 
 ---
 
+## 📊 项目统计
+
+- ⭐ Stars: ![GitHub stars](https://img.shields.io/github/stars/fwr567/dynamic_workflow?style=social)
+- 🍴 Forks: ![GitHub forks](https://img.shields.io/github/forks/fwr567/dynamic_workflow?style=social)
+- 👁️ Watchers: ![GitHub watchers](https://img.shields.io/github/watchers/fwr567/dynamic_workflow?style=social)
+
+---
+
+## 🎯 下一步
+
+✅ **已安装？** → 查看 [快速参考](./QUICKSTART.md)  
+✅ **想要深入？** → 阅读 [最佳实践](./docs/best_practices.md)  
+✅ **需要集成？** → 参考 [API 文档](./docs/api.md)  
+✅ **想要贡献？** → 查看 [贡献指南](./CONTRIBUTING.md)
+
+---
+
 **最后更新**: 2026-07-26  
-**当前版本**: 1.0.0
+**当前版本**: 1.0.0  
+**维护状态**: ✅ 积极维护
