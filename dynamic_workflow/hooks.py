@@ -87,33 +87,33 @@ fixtures = [
 ]
 
 # Website routes
-website_route_rules = [
-    {
-        "route": "/approval/<approval_id>",
-        "page_or_generator": "approval_detail"
-    }
-]
+#website_route_rules = [
+#    {
+#        "route": "/approval/<approval_id>",
+#        "page_or_generator": "approval_detail"
+#    }
+#]
 
 # Notification triggers
-notification_config = {
-    "Approval Log": {
-        "after_insert": [
-            "dynamic_workflow.integrations.notification.send_approval_notification",
-        ]
-    }
-}
+#notification_config = {
+#    "Approval Log": {
+#        "after_insert": [
+#            "dynamic_workflow.integrations.notification.send_approval_notification",
+#        ]
+#    }
+#}
 
 # Web form entries
-web_form_entries = [
-    {"name": "approval_form", "doctype": "Approval Log"}
-]
+#web_form_entries = [
+#    {"name": "approval_form", "doctype": "Approval Log"}
+#]
 
 # Sidebar menu items
 app_logo_url = "/assets/dynamic_workflow/images/logo.png"
 
 # Database indexes
-db_indexes = [
-    ("dynamic_workflow_config", ["doctype", "enabled"]),
-    ("approval_log", ["document_type", "document_name", "status"]),
-    ("approval_delegation", ["delegator", "delegatee", "status"]),
-]
+#db_indexes = [
+#    ("dynamic_workflow_config", ["doctype", "enabled"]),
+#    ("approval_log", ["document_type", "document_name", "status"]),
+#    ("approval_delegation", ["delegator", "delegatee", "status"]),
+#]
